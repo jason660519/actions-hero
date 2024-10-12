@@ -1,0 +1,20 @@
+# .github/workflows/example-workflow.yml
+name: Example Workflow
+
+on: [push]
+
+jobs:
+  generate-and-use-output:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run the custom action
+        id: my_custom_action
+        uses: ./.github/actions/my-custom-action # 假设自定义动作位于此路径下
+
+      - name: Use the output from the custom action
+        run: |
+          echo "The random number was: ${{ steps.my_custom_action.outputs.random-number }}"

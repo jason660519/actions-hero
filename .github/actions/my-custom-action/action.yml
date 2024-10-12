@@ -1,0 +1,10 @@
+# .github/actions/my-custom-action/action.yml
+name: "Example Action"
+description: "An example action that generates an output"
+outputs:
+  random-number:
+    description: "The generated random number"
+runs:
+  using: "node12"
+  pre: "npm install" # 安装依赖项
+  main: "index.js"
